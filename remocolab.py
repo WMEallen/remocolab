@@ -67,7 +67,7 @@ def _setupSSHDImpl(ngrok_token, ngrok_region):
   #print(f"root password: {root_password}")
   #print(f"{user_name} password: {user_password}")
   #print("✂️"*24)
-  subprocess.run(["useradd", "-s", "/bin/bash", "-m", user_name])
+  subprocess.run(['adduser', '--disabled-password', '--gecos', '', user_name])
   subprocess.run(["adduser", user_name, "sudo"], check = True)
   #subprocess.run(["chpasswd"], input = f"root:{root_password}", universal_newlines = True)
   #subprocess.run(["chpasswd"], input = f"{user_name}:{user_password}", universal_newlines = True)
@@ -245,7 +245,7 @@ subprocess.run(
 
 time.sleep(5)
 subprocess.run(['gsettings', 'set', 'org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/', 'use-system-font', 'false'], env={'DISPLAY': ':1'})
-subprocess.run(['gsettings', 'set', 'org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/', 'font', 'Noto Mono 12'], env={'DISPLAY': ':1'})
+subprocess.run(['gsettings', 'set', 'org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/', 'font', 'Noto Mono 10'], env={'DISPLAY': ':1'})
 """)
   r = subprocess.run(
                     ["su", "-c", "python3 vncrun.py", "colab"],
