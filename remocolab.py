@@ -13,6 +13,7 @@ token = None
 install = []
 username = 'colab'
 blacklist = []
+command = None
 
 
 def _log(message):
@@ -223,6 +224,9 @@ subprocess.run(['gsettings', 'set', 'org.gnome.Terminal.Legacy.Profile:/org/gnom
                     check = True,
                     stdout = subprocess.PIPE,
                     universal_newlines = True)
+    if command:
+        _log('Running command: %s' % command)
+        subprocess.run(['su', '-c', command, username])
     _log('Ready! Click here to connect: %s/vnc.html?autoconnect=1&resize=remote&password=%s' % (url, r.stdout))
 
 def setup():
