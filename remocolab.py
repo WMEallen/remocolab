@@ -49,7 +49,8 @@ def _get_gpu_name():
 def _check_gpu_available():
     gpu_name = _get_gpu_name()
     if gpu_name == None:
-        sys.exit('No GPU detected.')
+        _log('No GPU detected.')
+        _log('Attempting anyways...')
     else:
         _log('Detected GPU: %s' % gpu_name)
 
